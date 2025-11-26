@@ -1,0 +1,86 @@
+
+.icons{
+    color:white;
+    margin-left: 10px;
+}
+.img{
+    width: 80px;
+    border-radius: 50%;
+
+}
+.headl{
+    font-size: 3rem;
+    color:rgb(151, 199, 247);
+    padding-bottom: 16rem;
+    
+}
+.bann{
+   height: 100%;
+}
+#header
+{
+    padding: 10px;
+    background-color: rgb(243, 91, 167);
+    text-align: right;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+.nav{
+    background-color:rgb(150, 181, 233);
+}
+
+.space
+{
+    margin-right: 20px;
+}
+
+h1 
+{
+    text-align: center;
+    color: rgb(50, 124, 184);
+}
+
+#cardData
+{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: auto;
+    img{
+      width: 300px;
+      height: 300px;
+      padding:30px;
+
+    }
+}
+
+
+
+#carticon
+{
+    padding: 2px;
+    border-radius: 50%;
+    color:white;
+}
+
+.offer-product{
+    display: flex;
+    justify-content: space-evenly;
+    align-self: center;
+    flex-wrap: wrap;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+}
+.offer-product .offer1 img{
+    border-radius: 50%;
+    border: 2px solid black;
+    width: 200px;
+    height: 200px;
+   
+}
+img:hover{
+    padding: 10px;
+ }

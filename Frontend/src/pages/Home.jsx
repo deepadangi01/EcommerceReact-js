@@ -1,0 +1,123 @@
+import { useState, useEffect } from 'react';
+import axios from "axios";
+import Carousel from 'react-bootstrap/Carousel';
+
+import ban1 from "../image/b1.jpg";
+import ban2 from "../image/b2.png";
+import ban3 from "../image/b3.jpg";
+import offer from "../image/kidban.jpg";
+import offer2 from "../image/logo.png";
+
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../cartSlice';
+import { useNavigate } from 'react-router-dom';
+const Home=()=>{
+ const [mydata, setMydata]= useState([]);
+ const dispatch= useDispatch();
+ const navigate= useNavigate();
+
+ const loadData=()=>{
+    let api="http://localhost:3000/shopping/?type=new";
+    axios.get(api).then((res)=>{
+        setMydata(res.data);
+    })
+ }
+
+ useEffect(()=>{
+    loadData();
+ }, []);
+
+
+
+ const cartDataAdd=(id, name, price, categ, desc, myimg)=>{
+  dispatch(addToCart({id:id, name:name, price:price, category:categ, description:desc, image:myimg, qnty:1}))
+ }
+
+
+const goto_pro_detail=(id)=>{
+  navigate(`/prodetail/${id}`);
+}
+
+
+ const ans=mydata.map((key)=>{
+   return(
+    <>
+    
+    <Card style={{width:"380px", marginTop:"10px"}}>
+        <a href='#' onClick={()=>{goto_pro_detail(key.id)}}>
+           <img src={key.image} style={{height:"300px"}}  />
+        </a>  
+      <Card.Body>
+        <Card.Title> {key.name} for {key.category}</Card.Title>
+        <Card.Text>
+            {key.description} 
+            <br/>
+            <span style={{color:'red', fontWeight:'bold'}}>Price : Rs. {key.price}/-</span>  
+        </Card.Text>
+        <Button variant="primary" 
+        onClick={()=>{cartDataAdd(key.id, key.name, key.price, key.category, key.description, key.image)}}>add to cart</Button>
+      </Card.Body>
+    </Card>
+   <div className="newproduct">
+    
+   </div>
+    
+    </>
+   )
+
+ })
+
+    return(
+        <>
+            <Carousel>
+      <Carousel.Item>
+          <img src={ban1} width="100%" height="400" />
+        <Carousel.Caption>
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+      <img src={ban2} width="100%" height="400" />
+        <Carousel.Caption>
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item> 
+      <img src={ban3} width="100%" height="400" />
+        <Carousel.Caption>
+          <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
+
+    <div className="offer-product">
+      <div className="offer1">
+        <img src={offer} alt="" />
+      </div>
+      <div className="offer1">
+        <img src={offer2} alt="" />
+      </div>
+      <div className="offer1">
+      <img src={offer} alt="" />
+
+      </div>
+      <div className="offer1">
+      <img src={offer2} alt="" />
+
+      </div>
+    </div>
+       <div id="cardData">
+         {ans}     
+       </div>
+        </>
+    )
+}
+export default Home;
