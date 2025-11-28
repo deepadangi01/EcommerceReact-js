@@ -17,7 +17,7 @@ const KidsCollection=()=>{
 
  const loadData=()=>{
    
-    let api="http://localhost:3000/shopping/?category=kids";
+    let api="http://127.0.0.1:8000/api/products/?category=kids";
     axios.get(api).then((res)=>{
         setMydata(res.data);
     })
@@ -28,8 +28,9 @@ const KidsCollection=()=>{
  }, []);
 
 
+
  const cartDataAdd=(id, name, price, categ, desc, myimg)=>{
-  dispatch(addToCart({id:id, name:name, price:price, category:categ, description:desc, image:myimg, qnty:1}))
+  dispatch(addToCart({id:id, product_name:name, price:price, category:categ, description:desc, img:myimg, qnty:1}))
  }
 
 
@@ -38,19 +39,19 @@ const KidsCollection=()=>{
    return(
     <>
     
-    <Card style={{width:"380px", marginTop:"10px"}}>
-        <img src={key.image} style={{height:"300px"}}  />
+     <Card style={{width:"380px", marginTop:"10px"}}>
+        <img src={key.img} />
       <Card.Body>
-        <Card.Title> {key.name} for {key.category}</Card.Title>
+        <Card.Title> {key.product_name} for {key.category}</Card.Title>
         <Card.Text>
             {key.description} 
             <br/>
             <span style={{color:'red', fontWeight:'bold'}}>Price : Rs. {key.price}/-</span>  
         </Card.Text>
         <Button variant="primary" 
-        onClick={()=>{cartDataAdd(key.id, key.name, key.price, key.category, key.description, key.image)}}>add to cart</Button>
+        onClick={()=>{cartDataAdd(key.id, key.product_name, key.price, key.category, key.description, key.img)}}>add to cart</Button>
       </Card.Body>
-    </Card>
+      </Card>
 
     
     </>

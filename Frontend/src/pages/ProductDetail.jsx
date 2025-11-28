@@ -13,20 +13,20 @@ const ProductDetail=()=>{
 
     const loadData=()=>{
         let api=`http://127.0.0.1:8000/api/products/${id}`;
-        axios.get(api).then((res)=>{
-            setMydata(res.data);
-            console.log(res.data);
-            console.log(res.data.img)        })
-    }
-    
-    useEffect(()=>{
-        loadData();
-    }, []);
+         axios.get(api).then((res)=>{
+        setMydata(res.data);
+    })
+ }
+
+ useEffect(()=>{
+    loadData();
+ }, []);
 
 
-    const cartDataAdd=(id, name, price, categ, desc, image)=>{
-        dispatch(addToCart({id:id, product_name:name, price:price, category:categ, description:desc, img:image, qnty:1}))
-       }
+
+ const cartDataAdd=(id, name, price, categ, desc, myimg)=>{
+  dispatch(addToCart({id:id, product_name:name, price:price, category:categ, description:desc, img:myimg, qnty:1}))
+ }
 
 
     return(
@@ -43,7 +43,7 @@ const ProductDetail=()=>{
             <h6> Product for : {mydata.category} </h6>
             <h6> This is {mydata.type} Stock</h6>
             <Button
-             onClick={()=>{cartDataAdd(mydata.id, mydata.product_name, mydata.price, mydata.category, mydata.description, mydata.img)}}
+             onClick={()=>{cartDataAdd(key.id, key.product_name, key.price, key.category, key.description, key.img)}}
              >AddToCart</Button>
             </div>
 

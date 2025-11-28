@@ -20,7 +20,7 @@ const Search = () => {
   }, [txtdata]);
 
   const loadData = () => {
-    let api = "http://localhost:3000/shopping";
+    let api = "http://127.0.0.1:8000/api/products/";
     axios.get(api).then((res) => {
       setMydata(res.data);
     });

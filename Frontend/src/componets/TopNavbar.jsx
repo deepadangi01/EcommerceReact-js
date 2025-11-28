@@ -47,7 +47,7 @@ const TopNavbar = () => {
 
   const cartLen = mycart.length;
   return (
-    <>  <h4 style={{ backgroundColor: "pink", color: "white", margin: "0" }}><marquee behavior="" direction="right">Suprice is Big Offer for !!!!</marquee></h4>
+    <>  <h4 style={{ backgroundColor: "skyblue", color: "white", margin: "0" }}><marquee behavior="" direction="right">Suprice is Big Offer for !!!!</marquee></h4>
       <div id="header">
         <span id="carticon"> {cartLen} </span>
 
