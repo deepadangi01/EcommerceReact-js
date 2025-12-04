@@ -26,7 +26,7 @@ const MenuNav = () => {
 
   return (
     <>
-      <Navbar expand="lg" className="bg-body-tertiary">
+      <Navbar expand="lg" className="bg-body-tertiary ">
         <Container>
           <Navbar.Brand as={Link} to="/home">
             <img src={logo} alt="Logo" className="img" />

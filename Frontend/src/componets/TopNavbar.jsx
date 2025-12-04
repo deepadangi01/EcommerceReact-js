@@ -5,6 +5,8 @@ import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 import Modal from 'react-bootstrap/Modal';
 import axios from "axios";
 import Search from "../pages/Search";
@@ -47,7 +49,7 @@ const TopNavbar = () => {
 
   const cartLen = mycart.length;
   return (
-    <>  <h4 style={{ backgroundColor: "skyblue", color: "white", margin: "0" }}><marquee behavior="" direction="right">Suprice is Big Offer for !!!!</marquee></h4>
+    <>
       <div id="header">
         <span id="carticon"> {cartLen} </span>
 
@@ -75,12 +77,12 @@ const TopNavbar = () => {
           <Modal.Title>Admin Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Enter Id : <input type="text" value={adminid} onChange={(e) => { setAdminid(e.target.value) }} />
-          <br />
-          Enter Password : <input type="password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
-          <br />
-
-
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Control type="email" placeholder="name@example.com" value={adminid} onChange={(e) => { setAdminid(e.target.value) }} />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Control type="email" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
+          </Form.Group>
 
         </Modal.Body>
         <Modal.Footer>
@@ -95,4 +97,5 @@ const TopNavbar = () => {
     </>
   )
 }
+
 export default TopNavbar;
