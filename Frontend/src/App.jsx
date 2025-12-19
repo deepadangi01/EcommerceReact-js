@@ -10,6 +10,9 @@ import ContactUs from "./pages/ContactUs";
 import ProductDetail from "./pages/ProductDetail";
 import CheckOut from "./pages/CheckOut";
 import PaymentDone from "./pages/PaymentDone";
+import Shop from "./pages/Shop";
+import Signup from "./pages/Signup";
+import CreateProduct from "./pages/CreatProduct";
 
 const App=()=>{
   return(
@@ -19,6 +22,9 @@ const App=()=>{
              <Route path="/" element={<Layout/>}>
               <Route index element={<Home/>}/>
               <Route path="home" element={<Home/>}/>
+              <Route path="signup" element={<Signup/>}/>
+              <Route path="shop" element={<Shop/>}/>
+              <Route path="creatproduct" element={<CreateProduct/>}/>
               <Route path="cart" element={<Cart/>}/> 
               <Route path="product" element={<Product/>}/>
               <Route path="menwear" element={<MenCollection/>}/>

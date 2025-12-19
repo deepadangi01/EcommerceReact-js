@@ -14,16 +14,20 @@ const MenuNav = () => {
   const navigate = useNavigate();
   const [searchData, setSearchData] = useState("");
 
-  const myCart = () => {
-    navigate("/mycart");
-  };
+  
 
   const handleSearch = () => {
     if (searchData.trim() !== "") {
       navigate(`/search/${searchData}`);
     }
   };
-
+ const cartPage = () => {
+    navigate("/cart");
+  }
+   const SignupPage = () => {
+    navigate("/signup");
+  }
+  
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary ">
@@ -36,6 +40,7 @@ const MenuNav = () => {
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/home">Home</Nav.Link>
               <Nav.Link as={Link} to="/product">Products</Nav.Link>
+              <Nav.Link as={Link} to="/shop">Shops</Nav.Link>
               <Nav.Link as={Link} to="/cart">Cart</Nav.Link>
               <Nav.Link as={Link} to="/contact">Contact us</Nav.Link>
               <NavDropdown title="Categories" id="basic-nav-dropdown">
@@ -53,8 +58,8 @@ const MenuNav = () => {
                 placeholder="Search..."
               />
               <FaSearch onClick={handleSearch} style={{ cursor: 'pointer' }} />
-              <FaUser style={{ cursor: 'pointer' }} />
-              <div onClick={myCart} style={{ cursor: 'pointer', position: 'relative' }}>
+              <FaUser onClick={SignupPage} style={{ cursor: 'pointer' }} />
+              <div onClick={cartPage} style={{ cursor: 'pointer', position: 'relative' }}>
                 <FaShoppingCart />
                 {DataCount > 0 && (
                   <span style={{

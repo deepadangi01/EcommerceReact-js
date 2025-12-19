@@ -21,7 +21,7 @@ const CreateProduct = () => {
     e.preventDefault();
 
     // POST request to JSON Server to create a new product
-    axios.post("http://localhost:3000/shopping", product)
+    axios.post("http://127.0.0.1:8000/api/products/", product)
       .then(() => navigate("/admin/products"))
       .catch((err) => console.log(err));
   };

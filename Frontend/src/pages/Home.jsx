@@ -14,11 +14,14 @@ import Card from 'react-bootstrap/Card';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../cartSlice';
 import { useNavigate } from 'react-router-dom';
+
 const Home=()=>{
  const [mydata, setMydata]= useState([]);
  const dispatch= useDispatch();
- const navigate= useNavigate();
-
+ const navigate = useNavigate();
+const CreatProduct = () => {
+    navigate("creatproduct");
+  }
  const loadData=()=>{
     let api="http://127.0.0.1:8000/api/products/";
     axios.get(api).then((res)=>{
@@ -32,8 +35,8 @@ const Home=()=>{
 
 
 
- const cartDataAdd=(id, name, price, categ, desc, myimg)=>{
-  dispatch(addToCart({id:id, product_name:name, price:price, category:categ, description:desc, img:myimg, qnty:1}))
+ const cartDataAdd=(id, name, price, offer,categ, desc, myimg)=>{
+  dispatch(addToCart({id:id, product_name:name, price:price, offer:offer,category:categ, description:desc, img:myimg, qnty:1}))
  }
 
 
@@ -42,14 +45,15 @@ const Home=()=>{
    return(
     <>
     
-     <Card style={{width:"380px", marginTop:"10px"}}>
+     <Card className='box' style={{width:"300px" , marginTop:"20px"}}>
         <img src={key.img} />
       <Card.Body>
         <Card.Title> {key.product_name} for {key.category}</Card.Title>
         <Card.Text>
-            {key.description} 
-            <br/>
+           
             <span style={{color:'red', fontWeight:'bold'}}>Price : Rs. {key.price}/-</span>  
+            <p style={{color:'green', fontWeight:'bold'}}> OFFer: {key.offer}%</p>  
+             {key.description} 
         </Card.Text>
         <Button variant="primary" 
         onClick={()=>{cartDataAdd(key.id, key.product_name, key.price, key.category, key.description, key.img)}}>add to cart</Button>
@@ -92,6 +96,7 @@ const Home=()=>{
       </Carousel.Item>
     </Carousel>
 
+            <Button variant="primary" onClick={CreatProduct} >Create Products</Button>
     <div className="offer-product">
       <div className="offer1">
         <img src={offer} alt="" />

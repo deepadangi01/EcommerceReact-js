@@ -25,8 +25,8 @@ const MenCollection=()=>{
 
 
 
- const cartDataAdd=(id, name, price, categ, desc, myimg)=>{
-  dispatch(addToCart({id:id, product_name:name, price:price, category:categ, description:desc, img:myimg, qnty:1}))
+const cartDataAdd=(id, name, price, offer,categ, desc, myimg)=>{
+  dispatch(addToCart({id:id, product_name:name, price:price, offer:offer,category:categ, description:desc, img:myimg, qnty:1}))
  }
 
 
@@ -35,14 +35,16 @@ const MenCollection=()=>{
    return(
     <>
     
-     <Card style={{width:"380px", marginTop:"10px"}}>
+     <Card style={{width:"300px" , marginTop:"20px"}}>
         <img src={key.img} />
       <Card.Body>
         <Card.Title> {key.product_name} for {key.category}</Card.Title>
         <Card.Text>
+            
+            <span style={{color:'red', fontWeight:'bold'}}>Price : Rs. {key.price}/-</span>  
+            <p style={{color:'green', fontWeight:'bold'}}> OFFer :{key.offer} %</p>
             {key.description} 
             <br/>
-            <span style={{color:'red', fontWeight:'bold'}}>Price : Rs. {key.price}/-</span>  
         </Card.Text>
         <Button variant="primary" 
         onClick={()=>{cartDataAdd(key.id, key.product_name, key.price, key.category, key.description, key.img)}}>add to cart</Button>

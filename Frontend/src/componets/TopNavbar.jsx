@@ -20,32 +20,34 @@ const TopNavbar = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const [adminid, setAdminid] = useState("");
+  const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
+
 
   const cartPage = () => {
     navigate("/cart");
   }
+ const loginUser = async (e) => {
+    e.preventDefault(); // stop the page from refreshing
 
+    try {
+      // Send login request to Django
+      const res = await axios.post("http://127.0.0.1:8000/api/login/", {
+        email: email,
+        password: password,
+      });
 
-  const handleSubmit = () => {
-    let api = `http://localhost:3000/adminuser/?adminid=${adminid}`;
-    axios.get(api).then((res) => {
-      if (res.data.length >= 1) {
-        if (res.data[0].password == password) {
-          navigate("/dashboard");
-        }
-        else {
-          alert("Invalid Password!")
-        }
-      }
-      else {
-        alert("Invalid AdminID")
-      }
+      // Save token
+      localStorage.setItem("access", res.data.access);
 
-    })
-  }
+      alert("Login successful!");
+      console.log("User logged in:", res.data);
+    } catch (error) {
+      alert("Login failed!");
+    }
+  };
+
+  
 
   const cartLen = mycart.length;
   return (
@@ -70,7 +72,7 @@ const TopNavbar = () => {
 
       </div>
 
-
+    <h1>Welcome {user.full_name} Our shopping website!!</h1>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -78,10 +80,10 @@ const TopNavbar = () => {
         </Modal.Header>
         <Modal.Body>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Control type="email" placeholder="name@example.com" value={adminid} onChange={(e) => { setAdminid(e.target.value) }} />
+            <Form.Control type="text" placeholder="Email" name="email" value={email} onChange={(e) => { setemail(e.target.value) }} />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Control type="email" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
+            <Form.Control type="text" placeholder="Password" name="password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
           </Form.Group>
 
         </Modal.Body>
@@ -89,7 +91,7 @@ const TopNavbar = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button variant="primary" onClick={loginUser}>
             Login
           </Button>
         </Modal.Footer>
@@ -97,5 +99,6 @@ const TopNavbar = () => {
     </>
   )
 }
+
 
 export default TopNavbar;

@@ -33,11 +33,12 @@ const Cart=()=>{
         return(
             <>
                <tr>
-                <td> <img src={key.image} width="100" height="100" /> </td>
-                <td> {key.name} </td>
-                <td> {key.description} </td>
-                <td>{key.category}</td>
-                <td> {key.price}</td>
+                <td><img src={key.description} width="100" height="100" /> </td>
+                <td>{key.product_name}</td>
+                <td>{key.offer} </td>
+
+                <td> {key.category} </td>
+                 <td> {key.price}</td>
                 <td>
 
                 <a href="#" onClick={()=>{qtyDecrement(key.id)}}>
@@ -87,7 +88,7 @@ const Cart=()=>{
       <tbody>
          {Data}
          <tr>
-          <th>#</th>
+          <th></th>
           <th> </th>
           <th> </th>
           <th> </th>

@@ -12,8 +12,8 @@ const ProductDetail=()=>{
     const dispatch= useDispatch();
 
     const loadData=()=>{
-        let api=`http://127.0.0.1:8000/api/products/${id}`;
-         axios.get(api).then((res)=>{
+    let api=`http://127.0.0.1:8000/api/products/${id}`;
+    axios.get(api).then((res)=>{
         setMydata(res.data);
     })
  }
@@ -24,9 +24,10 @@ const ProductDetail=()=>{
 
 
 
- const cartDataAdd=(id, name, price, categ, desc, myimg)=>{
-  dispatch(addToCart({id:id, product_name:name, price:price, category:categ, description:desc, img:myimg, qnty:1}))
+ const cartDataAdd=(id, name, price, categ,offer, desc, myimg)=>{
+  dispatch(addToCart({id:id, product_name:name, price:price, category:categ,offer:offer, description:desc, img:myimg, qnty:1}))
  }
+
 
 
     return(

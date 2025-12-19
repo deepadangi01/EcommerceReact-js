@@ -51,7 +51,7 @@ const Search = () => {
             onClick={() =>
               addDataToCart(
                 key.id,
-                key.name,
+                key.product_name,
                 key.price,
                 key.description,
                 key.category,
