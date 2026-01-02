@@ -53,8 +53,9 @@ const TopNavbar = () => {
   return (
     <>
       <div id="header">
-        <span id="carticon"> {cartLen} </span>
 
+        <span id="carticon"> {cartLen} </span>
+      
         <a href="#" onClick={cartPage} >
           <FaShoppingCart className="space" />
         </a>
@@ -72,7 +73,6 @@ const TopNavbar = () => {
 
       </div>
 
-    <h1>Welcome {user.full_name} Our shopping website!!</h1>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

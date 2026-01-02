@@ -33,11 +33,11 @@ const Cart=()=>{
         return(
             <>
                <tr>
-                <td><img src={key.description} width="100" height="100" /> </td>
+                <td><img src={key.img} width="100" height="100" /> </td>
                 <td>{key.product_name}</td>
-                <td>{key.offer} </td>
+                <td>{key.category} </td>
 
-                <td> {key.category} </td>
+                <td> {key.description} </td>
                  <td> {key.price}</td>
                 <td>
 
@@ -77,8 +77,8 @@ const Cart=()=>{
         <tr>
           <th>#</th>
           <th> Name</th>
-          <th>Description</th>
           <th>Category</th>
+           <th>Description</th>
           <th> Price</th>
           <th> Quantity</th>
           <th> Total</th>
